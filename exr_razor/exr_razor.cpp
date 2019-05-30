@@ -3,6 +3,7 @@
 #include <string>
 #include <regex>
 #include <vector>
+#include <iostream>
 
 #include <OpenEXR/ImfTestFile.h>
 #include <OpenEXR/ImfInputFile.h>
@@ -161,6 +162,10 @@ int main(int argc, char *argv[])
                 // deallocate memory
                 for (int i = 0; i < channels_count; i++) { delete[] data_list[i]; }
                 delete[] data_list;
+
+
+                // inform of this action
+                std::cout << "[INFO exr_razor.exe: " << argv[i] << " - lightGroup tags has been cutted" << std::endl;
             }
         }
     }
@@ -188,28 +193,43 @@ std::string cuttag(std::string name, bool* has_tag)
 
         "Ci", "primary",
 
+        "directDiffuseLobe", "indirectDiffuseLobe",
+
+        "directSpecularPrimaryLobe", "indirectSpecularPrimaryLobe",
+        "directSpecularRoughLobe", "indirectSpecularRoughLobe",
+        "directSpecularClearcoatLobe", "indirectSpecularClearcoatLobe",
+        "directSpecularIridescenceLobe", "indirectSpecularIridescenceLobe",
+
+        "directSpecularFuzzLobe", "indirectSpecularFuzzLobe",
+
+        "transmissiveGlassLobe",
+        "directSpecularGlassLobe", "indirectSpecularGlassLobe",
+
+        "subsurfaceLobe",
+        "transmissiveSingleScatterLobe",
+
         "directDiffuse", "indirectDiffuse", "direct_diffuse", "indirect_diffuse",
         "diffuseDirect", "diffuseIndirect", "diffuse_direct", "diffuse_indirect",
 
         "directSpecular", "indirectSpecular", "direct_specular", "indirect_specular",
         "specularDirect", "specularIndirect", "specular_direct", "specular_indirect",
 
-        "sheenDirect","sheenIndirect", "sheen_direct","sheen_indirect",
-        "directSheen","indirectSheen", "direct_sheen","indirect_sheen",
+        "sheenDirect", "sheenIndirect", "sheen_direct", "sheen_indirect",
+        "directSheen", "indirectSheen", "direct_sheen", "indirect_sheen",
 
-        "coatDirect","coatIndirect", "coat_direct","coat_indirect",
-        "directCoat","indirectCoat", "direct_coat","indirect_coat",
+        "coatDirect", "coatIndirect", "coat_direct", "coat_indirect",
+        "directCoat", "indirectCoat", "direct_coat", "indirect_coat",
 
-        "transmissionDirect","transmissionIndirect", "transmission_direct","transmission_indirect",
-        "directTransmission","indirectTransmission", "direct_transmission","indirect_transmission",
+        "transmissionDirect", "transmissionIndirect", "transmission_direct", "transmission_indirect",
+        "directTransmission", "indirectTransmission", "direct_transmission", "indirect_transmission",
         "transmissive",
 
-        "sssDirect","sssIndirect", "sss_direct","sss_indirect",
-        "directSss","indirectSss", "direct_sss","indirect_sss",
+        "sssDirect", "sssIndirect", "sss_direct", "sss_indirect",
+        "directSss", "indirectSss", "direct_sss", "indirect_sss",
         "subsurface",
 
-        "volumeDirect","volumeIndirect", "volume_direct","volume_indirect",
-        "directVolume","indirectVolume", "direct_volume","indirect_volume",
+        "volumeDirect", "volumeIndirect", "volume_direct", "volume_indirect",
+        "directVolume", "indirectVolume", "direct_volume", "indirect_volume",
 
         "emissive", "emission"
     };
